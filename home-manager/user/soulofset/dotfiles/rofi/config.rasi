@@ -1,0 +1,5 @@
+//@theme "/run/current-system/sw/share/rofi/themes/DarkBlue.rasi"
+@theme "/home/soulofset/.local/share/rofi/themes/rounded-purple-dark.rasi"
+configuration {
+  show-icons: true;
+}

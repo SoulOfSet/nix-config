@@ -25,5 +25,13 @@
           ];
         };
 
+
+      nixosConfigurations.laptop-frodo = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs;};
+          modules = [
+            ./hosts/laptop-frodo/configuration.nix
+            inputs.home-manager.nixosModules.default
+          ];
+        };      
     };
 }

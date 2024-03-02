@@ -110,4 +110,6 @@
 
   # Programs to enable
   programs.hyprland.enable = true;
+
+  home-manager.useGlobalPkgs = true;
 }

@@ -18,21 +18,55 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+        pkgs.alacritty
+        pkgs.alacritty-theme
+        pkgs.neovim
+        pkgs.dunst
+        pkgs.pipewire
+        pkgs.pwvucontrol
+        pkgs.wireplumber
+        pkgs.xdg-desktop-portal-hyprland
+        pkgs.waybar
+        pkgs.rofi-wayland
+        pkgs.font-awesome
+        pkgs.waypaper
+        pkgs.swww
+        pkgs.swaybg
+        pkgs.git
+        pkgs.copyq
+        pkgs.kitty
+        pkgs.discord
+        pkgs.neofetch
+        pkgs.networkmanager
+        pkgs.networkmanagerapplet
+        pkgs.docker-compose
+        pkgs.w3m
+        pkgs.python3
+        pkgs.insomnia
+        pkgs.zsh
+        pkgs.oh-my-zsh
+        pkgs.papirus-icon-theme
+        pkgs.unzip
+        pkgs.grim
+        pkgs.slurp
+        pkgs.killall
+        pkgs.pulseaudio
+        pkgs.brightnessctl
+        pkgs.pamixer
+        pkgs.playerctl
+        pkgs.libnotify
+        pkgs.wlr-randr
+        pkgs.nwg-displays
+	pkgs.firefox    
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    ".config/alacritty/".source = ./dotfiles/alacritty;
+    ".config/waybar/".source = ./dotfiles/waybar;
+    ".config/hypr/".source = ./dotfiles/hypr;
+    ".config/rofi/".source = ./dotfiles/rofi;
   };
 
   # Home Manager can also manage your environment variables through
