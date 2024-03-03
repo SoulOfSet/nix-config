@@ -59,7 +59,8 @@
         pkgs.nwg-displays
 	pkgs.firefox
 	pkgs.lunarvim
-	pkgs.jetbrains.idea-ultimate    
+	pkgs.jetbrains.idea-ultimate
+        pkgs.thefuck    
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -90,4 +91,10 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Enable oh-my-zsh
+  programs.zsh.enable = true;
+  programs.zsh.oh-my-zsh.enable = true;
+  programs.zsh.oh-my-zsh.theme = "agnoster";
+  programs.zsh.oh-my-zsh.plugins = [ "thefuck" "git" ];  
 }

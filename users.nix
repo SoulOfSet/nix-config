@@ -7,6 +7,7 @@
                         home = "/home/soulofset/";
 			extraGroups = [ "networkmanager" "wheel" ];
                         description = "Jacob Sabella";
+			shell = pkgs.zsh;
                 };
 
 		home-manager = {
