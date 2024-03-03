@@ -67,6 +67,8 @@
     ".config/waybar/".source = ./dotfiles/waybar;
     ".config/hypr/".source = ./dotfiles/hypr;
     ".config/rofi/".source = ./dotfiles/rofi;
+    ".local/bin/".source = ./dotfiles/bin;
+    ".assets/wallpapers".source = ./assets/wallpapers;
   };
 
   # Home Manager can also manage your environment variables through

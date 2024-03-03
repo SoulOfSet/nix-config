@@ -112,4 +112,8 @@
   programs.hyprland.enable = true;
 
   home-manager.useGlobalPkgs = true;
+
+  fonts.packages = with pkgs; [
+        nerdfonts
+  ];  
 }
