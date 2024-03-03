@@ -57,7 +57,9 @@
         pkgs.libnotify
         pkgs.wlr-randr
         pkgs.nwg-displays
-	pkgs.firefox    
+	pkgs.firefox
+	pkgs.lunarvim
+	pkgs.jetbrains.idea-ultimate    
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
