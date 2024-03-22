@@ -66,12 +66,12 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".config/alacritty/".source = ./dotfiles/alacritty;
-    ".config/waybar/".source = ./dotfiles/waybar;
-    ".config/hypr/".source = ./dotfiles/hypr;
-    ".config/rofi/".source = ./dotfiles/rofi;
-    ".local/bin/".source = ./dotfiles/bin;
-    ".assets/wallpapers".source = ./assets/wallpapers;
+    ".config/alacritty/".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/nix-config/home-manager/user/soulofset/dotfiles/alacritty;
+    ".config/waybar/".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/nix-config/home-manager/user/soulofset/dotfiles/waybar;
+    ".config/hypr/".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/nix-config/home-manager/user/soulofset/dotfiles/hypr;
+    ".config/rofi/".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/nix-config/home-manager/user/soulofset/dotfiles/rofi;
+    ".local/bin/".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/nix-config/home-manager/user/soulofset/dotfiles/bin;
+    ".assets/wallpapers".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/nix-config/home-manager/user/soulofset/assets/wallpapers;
   };
 
   # Home Manager can also manage your environment variables through

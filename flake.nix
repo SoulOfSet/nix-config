@@ -32,6 +32,14 @@
             ./hosts/laptop-frodo/configuration.nix
             inputs.home-manager.nixosModules.default
           ];
+        };
+
+      nixosConfigurations.desktop-gimli = nixpkgs.lib.nixosSystem {
+           specialArgs = {inherit inputs;};
+           modules = [
+             ./hosts/desktop-gimli/configuration.nix
+             inputs.home-manager.nixosModules.default
+           ];
         };      
     };
 }
