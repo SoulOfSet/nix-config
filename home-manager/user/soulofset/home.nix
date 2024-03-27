@@ -35,7 +35,6 @@
         pkgs.git
         pkgs.copyq
         pkgs.kitty
-        pkgs.discord
         pkgs.neofetch
         pkgs.networkmanager
         pkgs.networkmanagerapplet
@@ -57,10 +56,19 @@
         pkgs.libnotify
         pkgs.wlr-randr
         pkgs.nwg-displays
-	pkgs.firefox
-	pkgs.lunarvim
-	pkgs.jetbrains.idea-ultimate
-        pkgs.thefuck    
+	      pkgs.firefox
+	      pkgs.lunarvim
+	      pkgs.jetbrains.idea-ultimate
+        pkgs.thefuck
+        (pkgs.writeShellApplication {
+          name = "discord";
+          text = "${pkgs.discord}/bin/discord --use-gl=desktop";
+        })
+        (pkgs.makeDesktopItem {
+          name = "discord";
+          exec = "discord";
+          desktopName = "Discord";
+        })
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -71,6 +79,7 @@
     ".config/hypr/".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/nix-config/home-manager/user/soulofset/dotfiles/hypr;
     ".config/rofi/".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/nix-config/home-manager/user/soulofset/dotfiles/rofi;
     ".local/bin/".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/nix-config/home-manager/user/soulofset/dotfiles/bin;
+    ".local/share/rofi/themes".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/nix-config/home-manager/user/soulofset/dotfiles/rofi-themes;
     ".assets/wallpapers".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/nix-config/home-manager/user/soulofset/assets/wallpapers;
   };
 
