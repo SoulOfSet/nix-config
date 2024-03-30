@@ -56,10 +56,15 @@
         pkgs.libnotify
         pkgs.wlr-randr
         pkgs.nwg-displays
-	      pkgs.firefox
-	      pkgs.lunarvim
-	      pkgs.jetbrains.idea-ultimate
+        pkgs.firefox
+        pkgs.lunarvim
+        pkgs.jetbrains.idea-ultimate
         pkgs.thefuck
+        pkgs.gnumake
+        pkgs.mqttx
+        pkgs.woeusb-ng
+        pkgs.ntfs3g
+        pkgs.fuse
         (pkgs.writeShellApplication {
           name = "discord";
           text = "${pkgs.discord}/bin/discord --use-gl=desktop";
@@ -104,6 +109,6 @@
   # Enable oh-my-zsh
   programs.zsh.enable = true;
   programs.zsh.oh-my-zsh.enable = true;
-  programs.zsh.oh-my-zsh.theme = "agnoster";
+  programs.zsh.oh-my-zsh.theme = "jonathan";
   programs.zsh.oh-my-zsh.plugins = [ "thefuck" "git" ];  
 }

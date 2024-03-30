@@ -172,8 +172,8 @@ bind = $mainMod SHIFT, 9, movetoworkspace, 9
 bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
 # Example special workspace (scratchpad)
-# bind = $mainMod, S, togglespecialworkspace, magic
-# bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+bind = $mainMod, S, togglespecialworkspace, magic
+bind = $mainMod SHIFT, S, movetoworkspace, special:magic
 
 # Scroll through existing workspaces with mainMod + scroll
 bind = $mainMod, mouse_down, workspace, e+1
@@ -188,17 +188,13 @@ bind = $mainMod, Y, exec, alacritty -e zsh -c 'echo "hi"; sudo nixos-rebuild swi
 
 # Editing configs
 bind = $mainMod SHIFT, H, exec, alacritty -e nano /etc/nixos/nix-config/home-manager/user/soulofset/dotfiles/hypr/hyprland.conf
-bind = $mainMod SHIFT, N, exec, alacritty -e sudo nixos-rebuild switch --flake /etc/nixos/nix-config/.#`hostname` && echo "Press enter to close" && read
-
+# bind = $mainMod SHIFT, N, exec, alacritty -e sh -c 'sudo nano /etc/nixos/configuration.nix; sudo nixos-rebuild switch'
 
 # Bring up volume control
 bind = $mainMod, V, exec, pwvucontrol
 
 # Bring up power menu
 bind = $mainMod SHIFT, P, exec, /home/soulofset/.local/bin/powermenu
-
-# Bring up dev env menu
-bind = $mainMod SHIFT, D, exec, /home/soulofset/.local/bin/devenv_select
 
 # Screenshot
 bind = , Print, exec, grim -g "$(slurp)"
