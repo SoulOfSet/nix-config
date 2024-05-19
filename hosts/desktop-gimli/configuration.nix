@@ -19,6 +19,9 @@
 
   networking.hostName = "desktop-gimli"; # Define your hostname.
 
+  # Enable Steam
+  programs.steam.enable = true;
+
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   ];

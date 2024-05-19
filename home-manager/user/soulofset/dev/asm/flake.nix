@@ -26,7 +26,7 @@
             python3Packages.python-memcached
             python3Packages.web
             python3Packages.kombu
-
+                        
             # Extra, non-mandatory packages
             python3Packages.xhtml2pdf
             python3Packages.reportlab
@@ -35,6 +35,8 @@
             python3Packages.openpyxl
             python3Packages.qrcode
             python3Packages.stripe
+            python3Packages.azure-core
+            python3Packages.azure-servicebus
           ];
 
           shellHook = ''

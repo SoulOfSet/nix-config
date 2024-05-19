@@ -65,6 +65,9 @@
         pkgs.woeusb-ng
         pkgs.ntfs3g
         pkgs.fuse
+        pkgs.xwaylandvideobridge
+        pkgs.obs-studio
+        pkgs.linux-wallpaperengine
         (pkgs.writeShellApplication {
           name = "discord";
           text = "${pkgs.discord}/bin/discord --use-gl=desktop";
