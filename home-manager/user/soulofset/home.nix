@@ -68,6 +68,7 @@
         pkgs.xwaylandvideobridge
         pkgs.obs-studio
         pkgs.linux-wallpaperengine
+        pkgs.caprine
         (pkgs.writeShellApplication {
           name = "discord";
           text = "${pkgs.discord}/bin/discord --use-gl=desktop";

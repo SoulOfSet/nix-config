@@ -21,7 +21,11 @@
 
   # Enable Steam
   programs.steam.enable = true;
-
+  
+  # Enable vbox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "soulofset" ];
+  
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   ];
