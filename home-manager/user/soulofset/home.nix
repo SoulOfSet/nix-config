@@ -6,6 +6,10 @@
   home.username = "soulofset";
   home.homeDirectory = "/home/soulofset/";
 
+  
+  wayland.windowManager.hyprland.xwayland.enable = true;
+  
+  
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -25,7 +29,6 @@
         pkgs.pipewire
         pkgs.pwvucontrol
         pkgs.wireplumber
-        pkgs.xdg-desktop-portal-hyprland
         pkgs.waybar
         pkgs.rofi-wayland
         pkgs.font-awesome
@@ -70,6 +73,7 @@
         pkgs.linux-wallpaperengine
         pkgs.caprine-bin
         pkgs.thunderbird
+        pkgs.btop
         (pkgs.writeShellApplication {
           name = "discord";
           text = "${pkgs.discord}/bin/discord --use-gl=desktop";
@@ -110,7 +114,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
+  
   # Enable oh-my-zsh
   programs.zsh.enable = true;
   programs.zsh.oh-my-zsh.enable = true;

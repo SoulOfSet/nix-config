@@ -34,10 +34,10 @@
           ];
         };
 
-      nixosConfigurations.desktop-gimli = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.desktop-aragorn = nixpkgs.lib.nixosSystem {
            specialArgs = {inherit inputs;};
            modules = [
-             ./hosts/desktop-gimli/configuration.nix
+             ./hosts/desktop-aragorn/configuration.nix
              inputs.home-manager.nixosModules.default
            ];
         };      

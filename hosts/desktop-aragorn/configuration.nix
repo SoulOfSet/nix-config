@@ -17,11 +17,14 @@
   boot.loader.systemd-boot.enable = true;  
 
 
-  networking.hostName = "desktop-gimli"; # Define your hostname.
+  networking.hostName = "desktop-aragorn"; # Define your hostname.
 
   # Enable Steam
   programs.steam.enable = true;
-  
+  programs.xwayland.enable = true;
+  programs.hyprland.xwayland.enable = true;
+    
+
   # Enable vbox
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "soulofset" ];

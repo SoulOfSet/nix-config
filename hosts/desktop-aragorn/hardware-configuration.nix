@@ -14,13 +14,14 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/6772b971-1007-4fb4-99dd-549f657eb39c";
+    { device = "/dev/disk/by-uuid/601e4356-9d83-44e8-8471-ebe05ad77483";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E8F2-94A3";
+    { device = "/dev/disk/by-uuid/94CA-F362";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices = [ ];
@@ -30,9 +31,9 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp30s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp39s0f3u4u1i5.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp31s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp20s0u5u1i5.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp6s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp13s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
