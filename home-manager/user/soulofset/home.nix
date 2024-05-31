@@ -74,16 +74,11 @@
         pkgs.caprine-bin
         pkgs.thunderbird
         pkgs.btop
-        (pkgs.writeShellApplication {
-          name = "discord";
-          text = "${pkgs.discord}/bin/discord --use-gl=desktop";
-        })
-        (pkgs.makeDesktopItem {
-          name = "discord";
-          exec = "discord";
-          desktopName = "Discord";
-        })
-  ];
+        pkgs.armcord
+        pkgs.terraform
+        pkgs.awscli2
+        pkgs.ollama
+];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
