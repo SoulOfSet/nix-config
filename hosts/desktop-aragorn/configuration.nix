@@ -7,9 +7,9 @@
 {
   imports =
     [ 
-	../global/configuration.nix
-	./hardware-configuration.nix
-        inputs.home-manager.nixosModules.default
+	    ../global/configuration.nix
+	    ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.default
     ];
   
   # Bootloader.
@@ -21,11 +21,12 @@
 
   # Enable Steam
   programs.steam.enable = true;
+  
+  # Wayland
   programs.xwayland.enable = true;
   programs.hyprland.xwayland.enable = true;
     
-
-  # Enable vbox
+   # Enable vbox
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "soulofset" ];
   

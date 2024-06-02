@@ -2,10 +2,10 @@
   description = "Development environment for Animal Shelter Manager v3";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11"; 
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05"; 
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }:
+  outputs = { nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
