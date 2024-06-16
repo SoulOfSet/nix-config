@@ -26,13 +26,22 @@
   programs.xwayland.enable = true;
   programs.hyprland.xwayland.enable = true;
     
-   # Enable vbox
+  # Enable vbox
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "soulofset" ];
   
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   ];
+
+
+  services.ollama.enable = true;
+  services.ollama.acceleration = "cuda";
+  services.ollama.listenAddress = "192.168.50.219:11434";
+  
+  networking.firewall = {
+    allowedTCPPorts = [ 11434 ];
+  };
 
   hardware.opengl = {
     enable = true;

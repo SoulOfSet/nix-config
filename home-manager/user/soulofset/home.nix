@@ -36,7 +36,6 @@
         pkgs.swww
         pkgs.swaybg
         pkgs.git
-        pkgs.copyq
         pkgs.kitty
         pkgs.neofetch
         pkgs.networkmanager
@@ -77,8 +76,11 @@
         pkgs.armcord
         pkgs.terraform
         pkgs.awscli2
-        pkgs.ollama
         pkgs.libstdcxx5
+        pkgs.k9s
+        pkgs.spotify
+        pkgs.xsel
+        pkgs.jq
 ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -110,7 +112,13 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  
+ 
+  # Setup the clipboard
+  services.cliphist = {
+    enable = true;
+    allowImages = true;
+  };
+
   # Enable oh-my-zsh
   programs.zsh.enable = true;
   programs.zsh.oh-my-zsh.enable = true;
