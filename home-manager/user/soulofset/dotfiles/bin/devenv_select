@@ -2,10 +2,11 @@
 
 # Power menu script using tofi
 
-CHOSEN=$(printf "ASM\nSimple PyIRC" | rofi -dmenu)
+CHOSEN=$(printf "ASM\nSimple PyIRC\nCMPSCI4200" | rofi -dmenu)
 
 case "$CHOSEN" in
 	"ASM") alacritty -e nix develop /etc/nixos/nix-config/home-manager/user/soulofset/dev/asm ;;	
 	"Simple PyIRC") alacritty -e nix develop /etc/nixos/nix-config/home-manager/user/soulofset/dev/simple-pyirc/ ;;
+  "CMPSCI4200") alacritty -e nix develop /etc/nixos/nix-config/home-manager/user/soulofset/dev/cmpsci4200/ ;;
   *) exit 1 ;;
 esac

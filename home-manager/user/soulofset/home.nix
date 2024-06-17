@@ -61,6 +61,7 @@
         pkgs.firefox
         pkgs.lunarvim
         pkgs.jetbrains.idea-ultimate
+        pkgs.jetbrains.pycharm-professional
         pkgs.thefuck
         pkgs.gnumake
         pkgs.mqttx
@@ -81,6 +82,9 @@
         pkgs.spotify
         pkgs.xsel
         pkgs.jq
+        pkgs.obsidian
+        pkgs.micromamba
+        pkgs.btop
 ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -112,7 +116,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
- 
+
   # Setup the clipboard
   services.cliphist = {
     enable = true;
@@ -124,4 +128,5 @@
   programs.zsh.oh-my-zsh.enable = true;
   programs.zsh.oh-my-zsh.theme = "jonathan";
   programs.zsh.oh-my-zsh.plugins = [ "thefuck" "git" ];  
-}
+
+  }
