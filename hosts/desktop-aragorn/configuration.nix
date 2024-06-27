@@ -18,7 +18,7 @@
 
 
   networking.hostName = "desktop-aragorn"; # Define your hostname.
-
+  networking.nameservers = [ "8.8.8.8" "1.1.1.1" "192.168.50.92" ];
   # Enable Steam
   programs.steam.enable = true;
   
