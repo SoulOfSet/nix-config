@@ -14,8 +14,11 @@
   
   # Bootloader.
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.enable = true;  
 
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.useOSProber = true;
+  boot.loader.grub.efiSupport = true;  
 
   networking.hostName = "desktop-aragorn"; # Define your hostname.
   networking.nameservers = [ "8.8.8.8" "1.1.1.1" "192.168.50.92" ];
@@ -35,9 +38,9 @@
   ];
 
 
-  services.ollama.enable = true;
-  services.ollama.acceleration = "cuda";
-  services.ollama.listenAddress = "192.168.50.219:11434";
+  #services.ollama.enable = true;
+  #services.ollama.acceleration = "cuda";
+  #services.ollama.listenAddress = "192.168.50.219:11434";
   
   networking.firewall = {
     allowedTCPPorts = [ 11434 ];

@@ -1,0 +1,117 @@
+{ config, pkgs, inputs, ... }:
+{
+  programs.nixvim = {
+    enable = true;
+    globals.mapleader = " ";
+    plugins = {
+      bufferline = { enable = true; };
+      lualine = { enable = true; };
+      oil = { enable = true; };
+      treesitter = { enable = true; };
+      toggleterm = {
+        enable = true;
+        settings = {
+          hide_numbers = false;
+          autochdir = true;
+          close_on_exit = true;
+          direction = "vertical";
+        };
+      };
+      gitsigns = {
+        enable = true;
+        settings.current_line_blame = true;
+      };
+      which-key = {
+        enable = true;
+        registrations = {
+          "<leader>fg" = "Find Git files with telescope";
+          "<leader>fw" = "Find text with telescope";
+          "<leader>ff" = "Find files with telescope";
+        };
+      };
+      markdown-preview = {
+        enable = true;
+        settings.theme = "dark";
+      };
+      noice = { enable = true; };
+      telescope = {
+        enable = true;
+        extensions = {
+          fzf-native = { enable = true; };
+        };
+      };
+      todo-comments = {
+        enable = true;
+        colors = {
+          error = ["DiagnosticError" "ErrorMsg" "#DC2626"];
+          warning = ["DiagnosticWarn" "WarningMsg" "#FBBF24"];
+          info = ["DiagnosticInfo" "#2563EB"];
+          hint = ["DiagnosticHint" "#10B981"];
+          default = ["Identifier" "#7C3AED"];
+          test = ["Identifier" "#FF00FF"];
+        };
+      };
+      neo-tree = {
+        enable = true;
+        enableDiagnostics = true;
+        enableGitStatus = true;
+        enableModifiedMarkers = true;
+        enableRefreshOnWrite = true;
+        closeIfLastWindow = true;
+        popupBorderStyle = "rounded";
+        buffers = {
+          bindToCwd = false;
+          followCurrentFile = { enabled = true; };
+        };
+        window = {
+          width = 40;
+          height = 15;
+          autoExpandWidth = false;
+          mappings = { "<space>" = "none"; };
+        };
+      };
+      nix = { enable = true; };
+      lsp = {
+        enable = true;
+        servers = {
+          tsserver.enable = true;
+          cssls.enable = true;
+          tailwindcss.enable = true;
+          html.enable = true;
+          astro.enable = true;
+          phpactor.enable = true;
+          svelte.enable = false;
+          vuels.enable = false;
+          pyright.enable = true;
+          marksman.enable = true;
+          nil-ls.enable = true;
+          dockerls.enable = true;
+          bashls.enable = true;
+          clangd.enable = true;
+          csharp-ls.enable = true;
+          lua-ls = {
+            enable = true;
+            settings.telemetry.enable = false;
+          };
+          rust-analyzer = {
+            enable = true;
+            installRustc = true;
+            installCargo = true;
+          };
+        };
+      };
+      alpha = {
+        enable = true;
+        theme = "dashboard";
+        iconsEnabled = true;
+      };
+      lsp-format = { enable = true; };
+      cmp = { enable = true; };
+      cmp-nvim-lsp = { enable = true; };
+      cmp-buffer = { enable = true; };
+      cmp-path = { enable = true; };
+      cmp_luasnip = { enable = true; };
+      cmp-cmdline = { enable = false; };
+    };
+  };
+}

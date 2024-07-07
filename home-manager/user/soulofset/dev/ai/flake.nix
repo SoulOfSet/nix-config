@@ -17,7 +17,8 @@
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
             python3
-            python3Packages.langchain
+            python3Packages.pip
+            python3Packages.virtualenv
             python3Packages.requests
             python3Packages.numpy
             python3Packages.pandas
@@ -25,7 +26,9 @@
             python3Packages.flake8
             python3Packages.black
             python3Packages.isort
-
+            python3Packages.openai
+            python3Packages.sentence-transformers
+            python3Packages.faiss
             # Extra packages
             git
             nodejs
@@ -35,6 +38,11 @@
 
           shellHook = ''
             echo "Ready to work on AI!"
+            export PYTHONUSERBASE=$PWD/.local
+            mkdir -p .local/lib/python3.11/site-packages
+            pip install --user --break-system-packages "langchain<0.2.0" "langchain-core<0.2.0" "langchain-community<0.2.0" "langchain-openai" "langchain-chroma" "beautifulsoup4" "langdetect" "python-iso639" "rapidfuzz" "unstructured-client" "unstructured"
+            export PATH=$PWD/.local/bin:$PATH
+            export PYTHONPATH=$PYTHONUSERBASE/lib/python3.11/site-packages:$PYTHONPATH
           '';
         };
       });
