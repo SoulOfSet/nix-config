@@ -1,5 +1,11 @@
 {config, pkgs, ...}: {
   programs.nixvim.plugins = {
+
+    # Auto save
+    auto-save = {
+      enable = true;
+    };
+
     # Buffer bar
     bufferline = {
       enable = true;
@@ -269,6 +275,7 @@
   programs.nixvim.extraPlugins = with pkgs.vimPlugins; [
     project-nvim
   ];
+  
   # Configure project.nvim
   programs.nixvim.extraConfigLua = ''
       require("project_nvim").setup({
