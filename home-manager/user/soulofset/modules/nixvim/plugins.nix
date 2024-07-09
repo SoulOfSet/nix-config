@@ -243,6 +243,8 @@
           installRustc = true;
           installCargo = true;
         };
+
+        java-language-server.enable = true;
       };
     };
 

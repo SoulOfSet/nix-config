@@ -13,7 +13,8 @@
     colorschemes.tokyonight.enable = true;
     extraConfigVim = ''
       autocmd VimLeave * call setreg('+', getreg('"'))
-    '';
+      '';
+
   };
 
   
