@@ -16,7 +16,7 @@
   home.stateVersion = "24.05";
 
   home.sessionVariables = {
-    # Add your environment variables here
+    JDTLS_JVM_ARGS = "/home/soulofset/.assets/jar/lombok.jar";
   };
 
 

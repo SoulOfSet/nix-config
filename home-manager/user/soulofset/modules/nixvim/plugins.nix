@@ -1,4 +1,4 @@
-{config, pkgs, ...}: {
+{lib, pkgs, ...}: {
   programs.nixvim.plugins = {
 
     # Auto save
@@ -105,10 +105,6 @@
     # Code snippets
     luasnip = {
       enable = true;
-      #extraConfig = {
-      #  enable_autosnippets = true;
-      #  store_selection_keys = "<Tab>";
-      #};
     };
 
     # Easily toggle comments
@@ -177,7 +173,7 @@
       enableModifiedMarkers = true;
       enableRefreshOnWrite = true;
       closeIfLastWindow = true;
-      popupBorderStyle = "rounded"; # Type: null or one of “NC”, “double”, “none”, “rounded”, “shadow”, “single”, “solid” or raw lua code
+      popupBorderStyle = "rounded";
       buffers = {
         bindToCwd = false;
         followCurrentFile = {
@@ -200,52 +196,42 @@
     lsp = {
       enable = true;
       servers = {
-        # Average webdev LSPs
-        tsserver.enable = true; # TS/JS
-        cssls.enable = true; # CSS
-        tailwindcss.enable = true; # TailwindCSS
-        html.enable = true; # HTML
-        astro.enable = true; # AstroJS
-        phpactor.enable = true; # PHP
-        svelte.enable = false; # Svelte
-        vuels.enable = false; # Vue
-
-        # Python
+        tsserver.enable = true;
+        cssls.enable = true;
+        tailwindcss.enable = true;
+        html.enable = true;
+        astro.enable = true;
+        phpactor.enable = true;
+        svelte.enable = false;
+        vuels.enable = false;
         pyright.enable = true;
-
-        # Markdown
         marksman.enable = true;
-
-        # Nix
         nil-ls.enable = true;
-
-        # Docker
         dockerls.enable = true;
-
-        # Bash
         bashls.enable = true;
-
-        # C/C++
         clangd.enable = true;
-
-        # C#
         csharp-ls.enable = true;
-
-        # Lua
         lua-ls = {
           enable = true;
           settings.telemetry.enable = false;
         };
-
-        # Rust
         rust-analyzer = {
           enable = true;
           installRustc = true;
           installCargo = true;
         };
-
-        java-language-server.enable = true;
       };
+    };
+
+   nvim-jdtls = {
+      enable = true;
+      cmd = [
+        (lib.getExe pkgs.jdt-language-server)
+          "-data" "/home/soulofset/Documents/projects/"
+          "-configuration" "/home/soulofset/.jdtls/config/"
+          "--jvm-arg=-Xbootclasspath/a:/home/soulofset/.assets/jar/lombok.jar"
+          "--jvm-arg=-javaagent:/home/soulofset/.assets/jar/lombok.jar"
+        ];
     };
 
     # Dashboard
@@ -258,37 +244,62 @@
     cmp.enable = true;
 
     cmp-nvim-lsp = {
-      enable = true; # Enable suggestions for LSP
+      enable = true;
     };
     cmp-buffer = {
-      enable = true; # Enable suggestions for buffer in current file
+      enable = true;
     };
     cmp-path = {
-      enable = true; # Enable suggestions for file system paths
+      enable = true;
     };
     cmp_luasnip = {
-      enable = true; # Enable suggestions for code snippets
+      enable = true;
     };
     cmp-cmdline = {
-      enable = false; # Enable autocomplete for command line
+      enable = false;
     };
   };
 
   programs.nixvim.extraPlugins = with pkgs.vimPlugins; [
     project-nvim
   ];
-  
-  # Configure project.nvim
+
+  # Configure project.nvim and cmp
   programs.nixvim.extraConfigLua = ''
-      require("project_nvim").setup({
-        manual_mode = false,
-        detection_methods = { "lsp", "pattern" },
-        patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
-        show_hidden = true,
-        silent_chdir = true,
-        scope_chdir = 'global',
-        datapath = vim.fn.stdpath("data"),
+    require("project_nvim").setup({
+      manual_mode = false,
+      detection_methods = { "lsp", "pattern" },
+      patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
+      show_hidden = true,
+      silent_chdir = true,
+      scope_chdir = 'global',
+      datapath = vim.fn.stdpath("data"),
+    })
+    require('telescope').load_extension('projects')
+
+    -- Configure nvim-cmp
+    local cmp = require'cmp'
+    cmp.setup({
+      snippet = {
+        expand = function(args)
+          require('luasnip').lsp_expand(args.body)
+        end,
+      },
+      mapping = {
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      },
+      sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+      }, {
+        { name = 'buffer' },
+        { name = 'path' },
       })
-      require('telescope').load_extension('projects')
-    '';
+    })
+  '';
 }
+

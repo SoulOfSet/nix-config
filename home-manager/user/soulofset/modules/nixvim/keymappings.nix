@@ -115,10 +115,21 @@
         options.silent = true;
         action = "<cmd>ToggleTerm direction=float<CR>";
       }
+
+      # Copy all text in the current buffer to the system clipboard
+      {
+        mode = "n";
+        key = "<leader>y";
+        options.silent = true;
+        action = "ggVG\"+y";
+      }
     ];
 
-    # ToggleTerm configuration
     extraConfigLua = ''
+      -- Ensure yank copies to the system clipboard as well as its existing functionality
+      vim.api.nvim_set_keymap('n', 'y', 'y"+y', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('v', 'y', 'y"+y', { noremap = true, silent = true })
+      
       require("toggleterm").setup{
         open_mapping = [[<c-\>]],
         direction = 'float',

@@ -75,6 +75,9 @@
     pkgs.glew
     pkgs.wl-clipboard
     pkgs.lazygit
+    pkgs.lazysql
+    pkgs.jdt-language-server
+    pkgs.prismlauncher
     (pkgs.writeShellApplication {
       name = "discord";
       text = "${pkgs.discord}/bin/discord --use-gl=desktop";
