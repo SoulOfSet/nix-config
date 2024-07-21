@@ -78,6 +78,8 @@
     pkgs.lazysql
     pkgs.jdt-language-server
     pkgs.prismlauncher
+    pkgs.postman
+    pkgs.nodejs_22
     (pkgs.writeShellApplication {
       name = "discord";
       text = "${pkgs.discord}/bin/discord --use-gl=desktop";

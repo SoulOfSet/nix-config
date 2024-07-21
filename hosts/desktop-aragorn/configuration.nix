@@ -22,25 +22,34 @@
 
   networking.hostName = "desktop-aragorn"; # Define your hostname.
   networking.nameservers = [ "8.8.8.8" "1.1.1.1" "192.168.50.92" ];
+  
   # Enable Steam
   programs.steam.enable = true;
   
   # Wayland
   programs.xwayland.enable = true;
   programs.hyprland.xwayland.enable = true;
-    
+  
   # Enable vbox
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "soulofset" ];
-  
+
+  # Enable nix-ld
+  programs.nix-ld.enable = true;
+
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   ];
 
+  # Setup docker
+  virtualisation.docker = {
+    enable = true;
+  };
 
-  #services.ollama.enable = true;
-  #services.ollama.acceleration = "cuda";
-  #services.ollama.listenAddress = "192.168.50.219:11434";
+  # Setup ollama
+  services.ollama.enable = true;
+  services.ollama.acceleration = "cuda";
+  services.ollama.listenAddress = "localhost:11434";
   
   networking.firewall = {
     allowedTCPPorts = [ 11434 ];

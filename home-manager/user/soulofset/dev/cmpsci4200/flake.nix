@@ -21,6 +21,11 @@
             python3Packages.jupyter
             python3Packages.jupyterlab
             python3Packages.notebook
+            python3Packages.pandas
+            python3Packages.scikit-learn
+            python3Packages.numpy
+            python3Packages.matplotlib
+            python3Packages.seaborn
           ];
 
           shellHook = ''

@@ -5,7 +5,7 @@
                         isNormalUser = true;
                         initialPassword = "12345";
                         home = "/home/soulofset/";
-			extraGroups = [ "networkmanager" "wheel" ];
+			extraGroups = [ "networkmanager" "wheel" "docker" ];
                         description = "Jacob Sabella";
 			shell = pkgs.zsh;
                 };

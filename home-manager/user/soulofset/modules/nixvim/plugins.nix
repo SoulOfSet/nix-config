@@ -262,6 +262,7 @@
 
   programs.nixvim.extraPlugins = with pkgs.vimPlugins; [
     project-nvim
+    jupytext-nvim
   ];
 
   # Configure project.nvim and cmp
@@ -276,6 +277,10 @@
       datapath = vim.fn.stdpath("data"),
     })
     require('telescope').load_extension('projects')
+
+    -- Configure jupytext-nvim
+    require("jupytext").setup({style = "light"})
+
 
     -- Configure nvim-cmp
     local cmp = require'cmp'
