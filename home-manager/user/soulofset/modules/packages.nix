@@ -80,6 +80,7 @@
     pkgs.prismlauncher
     pkgs.postman
     pkgs.nodejs_22
+    pkgs.bottles
     (pkgs.writeShellApplication {
       name = "discord";
       text = "${pkgs.discord}/bin/discord --use-gl=desktop";
