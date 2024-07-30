@@ -29,11 +29,16 @@
             python3Packages.openai
             python3Packages.sentence-transformers
             python3Packages.faiss
+            python3Packages.scikit-learn
+            python3Packages.jupyter
+            python3Packages.jupyterlab
+            python3Packages.notebook
             # Extra packages
             git
             nodejs
             openjdk
             gradle
+
           ];
 
           shellHook = ''

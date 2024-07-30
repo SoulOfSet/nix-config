@@ -50,6 +50,16 @@
     variant = "";
   };
 
+
+  services.xserver.windowManager.awesome = {
+      enable = true;
+      luaModules = with pkgs.luaPackages; [
+        luarocks # is the package manager for Lua modules
+        luadbi-mysql # Database abstraction layer
+      ];
+
+    };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
