@@ -33,6 +33,11 @@
             python3Packages.jupyter
             python3Packages.jupyterlab
             python3Packages.notebook
+            python3Packages.psycopg2
+            python3Packages.streamlit
+            python3Packages.matplotlib
+            python3Packages.seaborn
+            python3Packages.pypandoc
             # Extra packages
             git
             nodejs
@@ -45,7 +50,7 @@
             echo "Ready to work on AI!"
             export PYTHONUSERBASE=$PWD/.local
             mkdir -p .local/lib/python3.11/site-packages
-            pip install --user --break-system-packages "langchain<0.2.0" "langchain-core<0.2.0" "langchain-community<0.2.0" "langchain-openai" "langchain-chroma" "beautifulsoup4" "langdetect" "python-iso639" "rapidfuzz" "unstructured-client" "unstructured"
+            pip install --user --break-system-packages "langchain<0.2.0" "langchain-core<0.2.0" "langchain-community<0.2.0" "langchain-openai" "langchain-chroma" "langchain-experimental" "beautifulsoup4" "langdetect" "python-iso639" "rapidfuzz" "unstructured-client" "unstructured"
             export PATH=$PWD/.local/bin:$PATH
             export PYTHONPATH=$PYTHONUSERBASE/lib/python3.11/site-packages:$PYTHONPATH
           '';

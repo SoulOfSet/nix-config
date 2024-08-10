@@ -15,7 +15,7 @@
 		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
                 "on-click-right": "sh -c /run/current-system/sw/bin/pwvucontrol",
 		"format-icons": {
-			"default": ["", "", ""]
+			"default": [" ", " ", " "]
 		}
 	},
 	"network": {
