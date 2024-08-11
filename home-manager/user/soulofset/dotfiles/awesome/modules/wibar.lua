@@ -10,15 +10,16 @@ wibar.setup = function(s)
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
 
-    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
+    -- Create an imagebox widget for layout indicator
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(gears.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(-1) end),
-                           awful.button({ }, 4, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+        awful.button({ }, 1, function () awful.layout.inc( 1) end),
+        awful.button({ }, 3, function () awful.layout.inc(-1) end),
+        awful.button({ }, 4, function () awful.layout.inc( 1) end),
+        awful.button({ }, 5, function () awful.layout.inc(-1) end)
+    ))
 
-    -- Create a taglist widget for the screen
+    -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
@@ -40,7 +41,7 @@ wibar.setup = function(s)
         )
     }
 
-    -- Create a tasklist widget for the screen
+    -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
@@ -70,26 +71,91 @@ wibar.setup = function(s)
     -- Create a keyboard layout widget
     local mykeyboardlayout = awful.widget.keyboardlayout()
 
-    -- Create the wibox (top bar) for the screen
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    -- Define icon size for scaling
+    local icon_size = 16  -- Smaller icon size for better aesthetics
+
+    -- Create volume control widget with scaling
+    local volume_widget = wibox.widget {
+        widget = wibox.widget.textbox,
+        align = "center",
+        font = "sans " .. icon_size,
+        text = "🔊",
+        buttons = gears.table.join(
+            awful.button({}, 1, function() awful.spawn("pamixer -t") end),   -- Mute/unmute on left click
+            awful.button({}, 4, function() awful.spawn("pamixer -i 5") end), -- Increase volume on scroll up
+            awful.button({}, 5, function() awful.spawn("pamixer -d 5") end)  -- Decrease volume on scroll down
+        )
+    }
+
+    -- Create media control widgets with scaling
+    local media_prev = wibox.widget {
+        widget = wibox.widget.textbox,
+        font = "sans " .. icon_size,
+        text = "⏮",
+        buttons = gears.table.join(
+            awful.button({}, 1, function() awful.spawn("playerctl previous") end)
+        )
+    }
+
+    local media_play_pause = wibox.widget {
+        widget = wibox.widget.textbox,
+        font = "sans " .. icon_size,
+        text = "⏯",
+        buttons = gears.table.join(
+            awful.button({}, 1, function() awful.spawn("playerctl play-pause") end)
+        )
+    }
+
+    local media_next = wibox.widget {
+        widget = wibox.widget.textbox,
+        font = "sans " .. icon_size,
+        text = "⏭",
+        buttons = gears.table.join(
+            awful.button({}, 1, function() awful.spawn("playerctl next") end)
+        )
+    }
+
+    -- Create widget to display the current playing song
+    local song_widget = awful.widget.watch('playerctl metadata --format "{{ title }} - {{ artist }}"', 5)
+
+    -- Create the wibox with margin and subtle vaporwave background color
+    s.mywibox = awful.wibar({
+        position = "top",
+        screen = s,
+        bg = "#202040", -- Subtle dark purple background
+        fg = "#8ae9c1", -- Soft cyan text color
+        height = 30,    -- Increase the height for better spacing
+    })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            menu.mylauncher,
-            s.mytaglist,
-            s.mypromptbox,
+        {
+            layout = wibox.layout.align.horizontal,
+            { -- Left widgets
+                layout = wibox.layout.fixed.horizontal,
+                menu.mylauncher,
+                s.mytaglist,
+                s.mypromptbox,
+            },
+            s.mytasklist, -- Middle widget
+            { -- Right widgets
+                layout = wibox.layout.fixed.horizontal,
+                media_prev,
+                media_play_pause,
+                media_next,
+                song_widget,      -- Display current song
+                volume_widget,
+                mykeyboardlayout,
+                wibox.widget.systray(),
+                mytextclock,
+                s.mylayoutbox,
+            },
         },
-        s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
-            mytextclock,
-            s.mylayoutbox,
-        },
+        left = 10,   -- Margin on the left side
+        right = 10,  -- Margin on the right side
+        top = 5,     -- Margin on the top
+        bottom = 5,  -- Margin on the bottom
+        widget = wibox.container.margin
     }
 end
 

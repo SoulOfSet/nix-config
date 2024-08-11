@@ -1,5 +1,5 @@
--- If LuaRocks is installed, make sure that packages installed through it are found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
+
 
 -- Standard awesome library
 local gears = require("gears")
@@ -8,7 +8,6 @@ require("awful.autofocus")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
-local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
@@ -25,6 +24,9 @@ local signals = require("modules.signals")
 -- Set keys
 root.keys(bindings.globalkeys)
 
+-- Set up monitors before setting up screens
+layout.setup_monitors()
+
 -- {{{ Set wallpaper
 awful.screen.connect_for_each_screen(function(s)
     beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
@@ -38,4 +40,14 @@ awful.rules.rules = rules.create()
 
 -- Set up signals
 signals.setup()
+
+client.connect_signal("request::titlebars", layout.setup_titlebar)
+
+
+-- Force initial layout
+for s = 1, screen.count() do
+    for _, t in ipairs(screen[s].tags) do
+        t.layout = awful.layout.suit.spiral.dwindle
+    end
+end
 
