@@ -82,16 +82,7 @@
     pkgs.nodejs_22
     pkgs.bottles
     pkgs.luarocks
-    (pkgs.writeShellApplication {
-      name = "discord";
-      text = "${pkgs.discord}/bin/discord --use-gl=desktop";
-    })
-    (pkgs.makeDesktopItem {
-      name = "discord";
-      exec = "discord";
-      desktopName = "Discord";
-    })
+    pkgs.discord-canary
+    pkgs.nitrogen
   ];
-
-
 }

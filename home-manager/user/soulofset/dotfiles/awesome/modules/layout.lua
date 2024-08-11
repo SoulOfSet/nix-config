@@ -43,14 +43,19 @@ layout.setup_screen = function(s)
 
     -- Set up the wibar for the screen
     wibar.setup(s)
+
+    -- Ensure the wallpaper is set for this screen
     layout.set_wallpaper(s)
 end
-
 
 -- Monitor Configuration
 layout.setup_monitors = function()
     -- Configure monitors using xrandr
     awful.spawn.with_shell("xrandr --output DP-2 --mode 3840x2160 --rate 60 --pos 0x0 --output DP-0 --mode 2560x1440 --primary --rate 170 --pos 3840x0")
+    -- Apply the wallpaper to each screen after monitor setup
+    for s in screen do
+        layout.set_wallpaper(s)
+    end
 end
 
 -- Define available layouts
@@ -108,7 +113,6 @@ layout.setup_titlebar = function(c)
     -- Set the titlebar for the client
     awful.titlebar(c):set_widget(layout)
 end
-
 
 -- Connect the titlebar setup to the appropriate signal
 client.connect_signal("request::titlebars", layout.setup_titlebar)

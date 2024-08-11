@@ -3,7 +3,8 @@ local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local menu = require("modules.menu")
-
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
+local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local wibar = {}
 
 wibar.setup = function(s)
@@ -74,19 +75,6 @@ wibar.setup = function(s)
     -- Define icon size for scaling
     local icon_size = 16  -- Smaller icon size for better aesthetics
 
-    -- Create volume control widget with scaling
-    local volume_widget = wibox.widget {
-        widget = wibox.widget.textbox,
-        align = "center",
-        font = "sans " .. icon_size,
-        text = "🔊",
-        buttons = gears.table.join(
-            awful.button({}, 1, function() awful.spawn("pamixer -t") end),   -- Mute/unmute on left click
-            awful.button({}, 4, function() awful.spawn("pamixer -i 5") end), -- Increase volume on scroll up
-            awful.button({}, 5, function() awful.spawn("pamixer -d 5") end)  -- Decrease volume on scroll down
-        )
-    }
-
     -- Create media control widgets with scaling
     local media_prev = wibox.widget {
         widget = wibox.widget.textbox,
@@ -144,7 +132,8 @@ wibar.setup = function(s)
                 media_play_pause,
                 media_next,
                 song_widget,      -- Display current song
-                volume_widget,
+                volume_widget({widget_type = "arc"}),
+		logout_menu_widget(),
                 mykeyboardlayout,
                 wibox.widget.systray(),
                 mytextclock,

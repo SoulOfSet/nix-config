@@ -43,6 +43,8 @@ signals.setup()
 
 client.connect_signal("request::titlebars", layout.setup_titlebar)
 
+-- Restore background
+awful.spawn.with_shell("nitrogen --restore")
 
 -- Force initial layout
 for s = 1, screen.count() do
