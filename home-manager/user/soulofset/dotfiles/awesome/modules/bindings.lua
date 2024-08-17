@@ -322,6 +322,14 @@ bindings.globalkeys =
         {description = "run rofi", group = "launcher"}
     ),
     awful.key(
+        {variables.modkey, "Shift"},
+        "d",
+        function()
+            awful.spawn("/home/soulofset/.local/bin/devenv_select")
+        end,
+        {description = "run custom dev menu script", group = "launcher"}
+    ), 
+    awful.key(
         {"Mod1"},
         "Tab",
         function()

@@ -84,5 +84,6 @@
     pkgs.luarocks
     pkgs.discord-canary
     pkgs.nitrogen
+    pkgs.scrot
   ];
 }
