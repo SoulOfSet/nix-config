@@ -1,8 +1,8 @@
 { config, pkgs, inputs, ... }:
 
 {
-  home.username = "soulofset";
-  home.homeDirectory = "/home/soulofset/";
+  home.username = "jsabella";
+  home.homeDirectory = "/home/jsabella/";
 
 
   imports = [
@@ -16,7 +16,7 @@
   home.stateVersion = "24.05";
 
   home.sessionVariables = {
-    JDTLS_JVM_ARGS = "/home/soulofset/.assets/jar/lombok.jar";
+    JDTLS_JVM_ARGS = "/home/jsabella/.assets/jar/lombok.jar";
   };
 
 

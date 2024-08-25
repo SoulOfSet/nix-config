@@ -7,8 +7,8 @@
 {
   imports =
     [ 
-	    ../global/configuration.nix
-	    ./hardware-configuration.nix
+      ../global/configuration.nix
+      ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
     ];
   
@@ -30,16 +30,8 @@
   programs.xwayland.enable = true;
   programs.hyprland.xwayland.enable = true;
   
-  # Enable vbox
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "soulofset" ];
-
   # Enable nix-ld
   programs.nix-ld.enable = true;
-
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  ];
 
   # Setup docker
   virtualisation.docker = {

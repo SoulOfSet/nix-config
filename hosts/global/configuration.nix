@@ -50,6 +50,9 @@
     variant = "";
   };
 
+  # Enable flatpak
+  services.flatpak.enable = true;
+
 
   services.xserver.windowManager.awesome = {
       enable = true;
@@ -136,4 +139,7 @@
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
+
+  programs.kdeconnect.enable = true;
+
 }

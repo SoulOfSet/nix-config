@@ -227,10 +227,10 @@
       enable = true;
       cmd = [
         (lib.getExe pkgs.jdt-language-server)
-          "-data" "/home/soulofset/Documents/projects/"
-          "-configuration" "/home/soulofset/.jdtls/config/"
-          "--jvm-arg=-Xbootclasspath/a:/home/soulofset/.assets/jar/lombok.jar"
-          "--jvm-arg=-javaagent:/home/soulofset/.assets/jar/lombok.jar"
+          "-data" "/home/jsabella/Documents/projects/"
+          "-configuration" "/home/jsabella/.jdtls/config/"
+          "--jvm-arg=-Xbootclasspath/a:/home/jsabella/.assets/jar/lombok.jar"
+          "--jvm-arg=-javaagent:/home/jsabella/.assets/jar/lombok.jar"
         ];
     };
 

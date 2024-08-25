@@ -33,6 +33,16 @@ rules.create = function()
                 end
             end
         },
+	{
+		rule_any = { class = { "Steam" } },
+		properties = {
+			titlebars_enabled = false,
+			floating = true,
+			border_width = 0,
+			border_color = 0,
+			size_hints_honor = false,
+		},
+	}
     }
 end
 

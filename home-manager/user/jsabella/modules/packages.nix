@@ -85,5 +85,6 @@
     pkgs.discord-canary
     pkgs.nitrogen
     pkgs.scrot
+    pkgs.pulsemixer
   ];
 }

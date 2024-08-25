@@ -39,7 +39,7 @@
             python3Packages.seaborn
             python3Packages.pypandoc
             python3Packages.textual
-            python3Packages.gradle
+            python3Packages.typing
             # Extra packages
             git
             nodejs

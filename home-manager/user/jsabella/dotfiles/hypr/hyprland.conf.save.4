@@ -196,7 +196,7 @@ bindm = $mainMod, mouse:273, resizewindow
 bind = $mainMod, Y, exec, alacritty -e zsh -c 'echo "hi"; sudo nixos-rebuild switch --flake /etc/nixos/nix-config/.#desktop-gimli'
 
 # Editing configs
-bind = $mainMod SHIFT, H, exec, alacritty -e nano /etc/nixos/nix-config/home-manager/user/soulofset/dotfiles/hypr/hyprland.conf
+bind = $mainMod SHIFT, H, exec, alacritty -e nano /etc/nixos/nix-config/home-manager/user/jsabella/dotfiles/hypr/hyprland.conf
 bind = $mainMod SHIFT, N, exec, alacritty -e sudo nixos-rebuild switch --flake /etc/nixos/nix-config/.#`hostname` && echo "Press enter to close" && read
 
 
@@ -204,10 +204,10 @@ bind = $mainMod SHIFT, N, exec, alacritty -e sudo nixos-rebuild switch --flake /
 bind = $mainMod, V, exec, pwvucontrol
 
 # Bring up power menu
-bind = $mainMod SHIFT, P, exec, /home/soulofset/.local/bin/powermenu
+bind = $mainMod SHIFT, P, exec, /home/jsabella/.local/bin/powermenu
 
 # Bring up dev env menu
-bind = $mainMod SHIFT, D, exec, /home/soulofset/.local/bin/devenv_select
+bind = $mainMod SHIFT, D, exec, /home/jsabella/.local/bin/devenv_select
 
 # Screenshot
 bind = , Print, exec, grim -g "$(slurp)"

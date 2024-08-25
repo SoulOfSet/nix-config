@@ -325,7 +325,7 @@ bindings.globalkeys =
         {variables.modkey, "Shift"},
         "d",
         function()
-            awful.spawn("/home/soulofset/.local/bin/devenv_select")
+            awful.spawn("/home/jsabella/.local/bin/devenv_select")
         end,
         {description = "run custom dev menu script", group = "launcher"}
     ), 
@@ -561,6 +561,14 @@ bindings.globalkeys = gears.table.join(
             move_window_to_screen_and_focus("down")
         end,
         {description = "move window and focus to the lower screen", group = "client"}
+    ),
+    awful.key(
+    	{variables.modkey, "Shift"},
+    	"v",
+    	function()
+        	awful.spawn("alacritty -e pulsemixer")
+    	end,
+    	{description = "open pulsemixer in alacritty", group = "launcher"}
     )
 )
 

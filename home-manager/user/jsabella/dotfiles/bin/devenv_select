@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Power menu script using tofi
+
+CHOSEN=$(printf "ASM\nSimple PyIRC\nlazygradle\nAI" | rofi -dmenu)
+
+case "$CHOSEN" in
+	"ASM") alacritty -e nix develop /etc/nixos/nix-config/home-manager/user/jsabella/dev/asm ;;	
+	"Simple PyIRC") alacritty -e nix develop /etc/nixos/nix-config/home-manager/user/jsabella/dev/simple-pyirc/ ;;
+	"lazygradle") alacritty -e nix develop /etc/nixos/nix-config/home-manager/user/jsabella/dev/lazygradle/ ;;
+	"AI") alacritty -e nix develop /etc/nixos/nix-config/home-manager/user/jsabella/dev/ai/ ;;
+	*) exit 1 ;;
+esac

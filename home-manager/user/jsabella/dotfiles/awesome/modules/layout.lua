@@ -8,7 +8,7 @@ local wibar = require("modules.wibar")
 local layout = {}
 
 -- Set your original custom wallpaper path
-local original_wallpaper = "/home/soulofset/.assets/wallpapers/city.png"
+local original_wallpaper = "/home/jsabella/.assets/wallpapers/city.png"
 
 layout.set_wallpaper = function(s)
     -- Use the original wallpaper
