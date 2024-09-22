@@ -63,6 +63,13 @@
 
     };
 
+  services.xserver.windowManager.qtile = {
+    enable = true;
+    extraPackages = python3Packages: with python3Packages; [
+      qtile-extras
+    ];
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -141,5 +148,5 @@
   users.defaultUserShell = pkgs.zsh;
 
   programs.kdeconnect.enable = true;
-
+  programs.noisetorch.enable = true;
 }

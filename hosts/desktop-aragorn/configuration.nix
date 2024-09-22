@@ -44,7 +44,12 @@
   services.ollama.listenAddress = "localhost:11434";
   
   networking.firewall = {
-    allowedTCPPorts = [ 11434 ];
+    allowedTCPPorts = [ 11434 6443];
+  };
+
+  services.k3s = {
+    enable = true;
+    role = "server";
   };
 
   hardware.opengl = {
@@ -85,7 +90,7 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
 }

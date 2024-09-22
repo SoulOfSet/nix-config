@@ -7,10 +7,7 @@
     })
   ];
 
-  
-
   home.packages = [
-    pkgs.linux-wallpaperengine
     pkgs.alacritty
     pkgs.dunst
     pkgs.pipewire
@@ -82,9 +79,18 @@
     pkgs.nodejs_22
     pkgs.bottles
     pkgs.luarocks
-    pkgs.discord-canary
+    pkgs.discord
     pkgs.nitrogen
     pkgs.scrot
     pkgs.pulsemixer
+    pkgs.ani-cli
+    pkgs.google-cursor
+    pkgs.runelite
+    pkgs.vesktop
+    pkgs.kubernetes-helm
+    pkgs.dooit
+    pkgs.dbeaver-bin
+    pkgs.steam-tui
+    pkgs.steamcmd
   ];
 }

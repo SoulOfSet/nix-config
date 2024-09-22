@@ -29,29 +29,13 @@ layout.set_wallpaper = function(s)
 end
 
 layout.setup_screen = function(s)
-    -- Assign even workspaces to one screen and odd workspaces to another
-    if s.index == 1 then
-        -- Monitor 1 (assume the first monitor is assigned index 1)
-        awful.tag({ "1", "3", "5", "7", "9" }, s, awful.layout.suit.spiral.dwindle)
-    elseif s.index == 2 then
-        -- Monitor 2 (assume the second monitor is assigned index 2)
-        awful.tag({ "2", "4", "6", "8" }, s, awful.layout.suit.spiral.dwindle)
-    else
-        -- For any additional monitors, you can assign a different set of workspaces if needed
-        awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.suit.spiral.dwindle)
-    end
-
-    -- Set up the wibar for the screen
-    wibar.setup(s)
-
-    -- Ensure the wallpaper is set for this screen
-    layout.set_wallpaper(s)
+   layout.set_wallpaper(s)
 end
 
 -- Monitor Configuration
 layout.setup_monitors = function()
     -- Configure monitors using xrandr
-    awful.spawn.with_shell("xrandr --output DP-2 --mode 3840x2160 --rate 60 --pos 0x0 --output DP-0 --mode 2560x1440 --primary --rate 170 --pos 3840x0")
+    awful.spawn.with_shell("xrandr --output HDMI-0 --mode 7680x2160 --rate 120 --pos 0x0 --primary --scale 0.75x0.75")
     -- Apply the wallpaper to each screen after monitor setup
     for s in screen do
         layout.set_wallpaper(s)
